@@ -3,7 +3,7 @@ const { UserModel } = require("../models");
 
 const validateJWT = async (req, res, next) => {
     if (req.method == "OPTIONS") {
-    ext();
+    next();
     } else if (
     req.headers.authorization &&
     req.headers.authorization.includes("Bearer")

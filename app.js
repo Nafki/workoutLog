@@ -2,10 +2,10 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 
-
-
 require("dotenv").config();
 app.use(Express.json());
+
+app.use(require('./middleware/headers'));
 
 const controllers = require("./controllers");
 
@@ -21,8 +21,8 @@ app.use("/log", controllers.logController);
 dbConnection.authenticate()
 .then(() => dbConnection.sync())
 .then(() => {
-    app.listen(5000, () => {
-    console.log(`[Server]: App is listening on 5000.`);
+    app.listen(3000, () => {
+    console.log(`[Server]: App is listening on 3000.`);
     });
 })
 .catch((err) => {

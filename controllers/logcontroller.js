@@ -27,10 +27,12 @@ router.post("/", validateJWT,async(req, res) =>{ // no need to put log because i
     
 router.get("/", async(req, res) =>{
     //res.send("log get called")
+
     try {   
         const entries = await LogModel.findAll();
+        console.log('entries', entries)
         res.status(200).json(entries);
-        } catch (err) {
+    } catch (err) {
         res.status(500).json({ error: err });
         }
     });
@@ -75,7 +77,7 @@ router.put("/:id",validateJWT, async(req, res) =>{
         res.status(500).json({ error: err });
         }
 
-        });
+});
 
 router.delete("/:id",validateJWT, async(req, res) =>{
         //res.send("log delete by id called " + req.params.id)

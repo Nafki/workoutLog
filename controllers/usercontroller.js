@@ -3,6 +3,7 @@ const { UniqueConstraintError } = require("sequelize/lib/errors"); // for errorh
 const{UserModel} = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+
 router.post("/register", async(req, res) =>{
     let {username, password} = req.body.user;
     //console.log("register", req)
